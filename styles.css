@@ -1,0 +1,491 @@
+/* 
+Timothy Olofson
+December 5th 2024
+Frontend Simplified (FES)
+Advanced E-Commerce App  
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,400;1,500;1,700;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+nav {
+  height: 80px;
+  display: flex;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  max-height: 50vh;
+  padding: 20px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.nav__container {
+  width: 100%;
+  padding: 0 24px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.brown {
+  color: brown;
+}
+
+.logo {
+  width: 160px;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nav__link {
+  margin-left: 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: brown;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.nav__link:hover {
+
+  text-decoration: underline;
+}
+
+.nav__link--primary {
+  border: 2px solid #a52a2a;
+  border-radius: 4px;
+}
+
+.nav__link--primary:hover {
+
+  text-decoration: none;
+}
+
+.btn__menu {
+
+  background: transparent;
+  font-size: 40px;
+  text-align: center;
+  border: none;
+  color: brown;
+  display: none;
+}
+
+.menu__backdrop {
+  position: absolute;
+  background: #242424;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu__list {
+  padding: 32px 0;
+}
+
+.menu__link {
+  font-size: 40px;
+  color: white;
+}
+
+.btn__menu--close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 8px;
+  color: white;
+}
+
+/* 
+
+LANDING 
+
+*/
+
+#landing {
+  background: #8111113a;
+}
+
+header {
+  height: calc(100vh - 80px);
+}
+
+.header__container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.header__description {
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  color: brown;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+
+  transform: translateY(1px);
+}
+
+.btn {
+  background-color: brown;
+  color: white;
+  padding: 12px 12px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: none;
+}
+
+.header_img--wrapper {
+  padding: 48px;
+  z-index: 50;
+}
+
+.container {
+  padding: 56px 0;
+}
+
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-curser {
+  cursor: not-allowed;
+}
+
+/* 
+
+HIGHLIGHTS 
+
+*/
+
+#highlights {
+  position: relative;
+}
+
+#highlights:after,
+#highlights:before {
+
+  background: url('assets/wave.svg');
+  content: "";
+  position: absolute;
+  width: 101vw;
+  height: 12vw;  
+  left: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#highlights:before {
+
+  transform: translateY(-100%);
+  top: 1px;
+}
+
+#highlights:after {
+
+  transform: translateY(100%) rotate(180deg);
+  bottom: 1px;
+}
+
+.highlight__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.highlight {
+  padding: 0 24px;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.highlight__para {
+  max-width: 280px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.highlight__img {
+  border: 2px solid darkgray;
+  color: brown;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.highlight__subtitle {
+  font-size: 20px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/*
+
+FEATURES
+
+*/
+
+#features {
+  padding-top: 8vw;
+  background: #8111113a;
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  width: 25%;
+  padding: 24px;
+}
+
+.book__img {
+  max-height: 360px;
+  transition: all 300ms ease;
+  cursor: no-drop;
+}
+
+.book__img--wrapper {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.book:hover .book__img {
+  transform: scale(1.03);
+}
+
+.book__title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.book__title:hover {
+  text-decoration: underline;
+  cursor: not-allowed;
+}
+
+.book__ratings {
+  margin-bottom: 8px;
+  color: #d6a21d;
+}
+
+.book__price--normal {
+  text-decoration: line-through;
+  padding-right: 6px;
+  color: #848484;
+}
+
+/*
+
+RECENT BOOKS
+
+*/
+
+.book--sorter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.explore__title {
+  margin-bottom: 0;
+}
+
+/*
+
+EXPLORE
+
+*/
+
+#explore {
+  background-color: #8111113a;
+}
+
+/*
+
+FOOTER
+
+*/
+
+footer {
+  background: #242424;
+}
+
+.footer__logo {
+  display: flex;
+}
+
+.footer__logo--img {
+  width: 160px;
+  filter: grayscale(1) invert(1);
+}
+
+.footer__link,
+.footer__copyright {
+  color: white;
+}
+
+.footer__links {
+  margin: 20px 0 20px 0;
+}
+
+.footer__link {
+  padding: 0 8px;
+}
+
+
+/*** SMALL PHONES, TABLETS, & LARGE SMARTPHONES. ***/
+
+@media (max-width: 768px) {
+
+  .header__description {
+
+    padding: 0 24px;
+  }
+
+  h1 {
+
+    font-size: 40px;
+  }
+
+  h2 {
+
+    font-size: 26px;
+  }
+
+  button {
+
+    font-size: 18px;
+  }
+
+  .book {
+
+    width: 50%;
+  }
+}
+
+/* SMALL & LARGE SMARTPHONES */
+
+@media (max-width: 550px) {
+
+  .nav__links {
+
+    display: none;
+  }
+
+  .btn__menu {
+
+    display: block;
+  }
+
+  .highlight {
+
+    width: 100%;
+  }
+
+  .highlight:not(:last-child) {
+    
+    margin-bottom: 24px;
+  }
+}
