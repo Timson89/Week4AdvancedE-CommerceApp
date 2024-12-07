@@ -4,21 +4,79 @@
 // Advanced E-Commerce App 
 
 
-function renderBooks() {
+function renderBooks(filter) {
 
-  const bookWrapper = document.querySelector('.recent-books');
+  const bookWrapper = document.querySelector('.browse-books');
 
-  // console.log();
+  const browseBooks = getBooks();
 
-  const recentBooks = getBooks();
+  if (filter === 'LOW_TO_HIGH') {
 
-    console.log(recentBooks);
+    browseBooks.sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
+  } 
+  else if (filter === 'HIGH_TO_LOW') {
 
-  bookWrapper.innerHTML =
+    browseBooks.sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice));
+  }
+  else if (filter === 'RATING') {
 
-  ``
+    browseBooks.sort((a, b) => b.rating - a.rating);
+  }
+
+  const booksHTML = browseBooks.map(book => {
+
+      return `<div class="book">
+
+        <figure class="book__img--wrapper">
+        
+          <img class="book__img" src="${book.url}" alt="Book Cover for ">
+        
+        </figure>
+
+        <div class="book__title">${book.title}</div>
+
+        <div class="book__ratings">${ratingsHTML(book.rating)}</div>
+
+        <div class="book_pricing">${priceHTML(book.originalPrice, book.salePrice)}</div>  
+    
+      </div>`
+
+  }).join(' ');
+
+  bookWrapper.innerHTML = booksHTML;
 }
+
+function priceHTML(originalPrice, salePrice) {
+
+  if (!salePrice ) { 
+    
+    return `$${originalPrice.toFixed(2)}` 
+  } 
+  return `<span class="book__price--normal">$${originalPrice.toFixed(2)}</span> $${salePrice.toFixed(2)}` 
+}
+
+function ratingsHTML(rating) {
+
+  let ratingHTML = "";
+
+  for (let i = 0; i < Math.floor(rating); ++i) {
+
+    ratingHTML += '<i class="fas fa-star"></i>\n';
+  }
+  if (!Number.isInteger(rating)) {
+
+    ratingHTML += '<i class="fas fa-star-half-alt"></i>\n';
+  }
+  return ratingHTML;
+}
+
+function filterBooks(event) {
+
+  renderBooks(event.target.value);
+}
+
 setTimeout(() => { renderBooks() });
+
 
 // FAKE DATA
 
@@ -29,7 +87,7 @@ function getBooks() {
     {
       id: 1,
       title: "Crack the Coding Interview",
-                url: "assets/crack the coding interview.png",
+      url: "assets/crack the coding interview.png",
       originalPrice: 49.95,
       salePrice: 14.95,
       rating: 4.5,

@@ -81,7 +81,7 @@ Advanced E-Commerce App
 
           <h2>Find your dream book with <span class="brown">Library</span></h2>
         
-          <a href="#features"><button class="btn">Browse Books</button></a>
+          <a href="#explore"><button class="btn">Browse Books</button></a>
 
         </div>
 
@@ -460,7 +460,7 @@ Advanced E-Commerce App
 
             <h2 class="explore__title">Explore More <span class="brown">Books</span></h2>
 
-            <select name="Sort" id="filter">
+            <select name="Sort" id="filter" onchange="filterBooks(event)">
 
               <option value="" disabled selected>Sort</option>
               <option value="LOW_TO_HIGH">Price, Low to High</option>
@@ -469,6 +469,8 @@ Advanced E-Commerce App
 
             </select>
           </div>
+
+          <div class="books browse-books"></div>
 
         </div>
       </div>
