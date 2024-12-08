@@ -377,29 +377,59 @@ FEATURES
 
 /*
 
-RECENT BOOKS
+EXPLORE
 
 */
-
-.book--sorter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-}
 
 .explore__title {
   margin-bottom: 0;
 }
 
-/*
-
-EXPLORE
-
-*/
+.book--sorter {
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 #explore {
   background-color: #8111113a;
+}
+
+.book__loading {
+  color: red;
+  font-size: 60px;
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book__loading--spinner {
+  display: none !important;
+}
+
+.book__loading .book__loading--spinner {
+  display: block;
+}
+
+.fa-spinner {
+  font-size: 100px;
+  margin: 100px 0;
+  animation: rotate 600ms infinite linear;
+}
+
+@keyframes rotate {
+
+  0% {
+
+    transform: rotate(0);
+  } 
+  100% {
+
+    transform: rotate(360deg);
+  }
 }
 
 /*
